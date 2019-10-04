@@ -54,7 +54,11 @@ def selImgFolder():
         files = os.listdir(imageFolder)
         for file in files:
             if (file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png')):
-                prices.append(file.split('.')[0])
+                filter = file.split('.')[0]
+                if('(' in filter):
+                    prices.append(filter.split('(')[0])
+                else:
+                    prices.append(file.split('.')[0])
                 filesCount+=1
                 images.append(file)
         print(prices,filesCount)
@@ -107,6 +111,7 @@ def errorCheck():
 
 # Adding Information on WebSite
 def addingInfo():
+    ui.label_11.setText("0" + "/" + str(filesCount))
     ui.pushButton.setEnabled(False)
     errors = errorCheck()
     if not errors:
