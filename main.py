@@ -100,9 +100,10 @@ def checkBoxSolve():
 
 # Handling Errors
 def errorCheck():
+    
     try:
         errors=""
-        if not ui.lineEdit.text() or not ui.lineEdit_2.text() or not ui.lineEdit_4.text() or not ui.textEdit.toPlainText() or not ui.lineEdit_5.text() or not ui.label_10.text() or ui.comboBox.currentIndex()==1:
+        if not ui.lineEdit.text() or not ui.lineEdit_2.text() or not ui.lineEdit_4.text() or not ui.textEdit.toPlainText() or not ui.lineEdit_5.text() or not ui.label_10.text() or ui.comboBox.currentIndex()==0:
             errors+="Elan tam doldurulmayib"
 
         return  errors
