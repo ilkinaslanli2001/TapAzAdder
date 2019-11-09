@@ -66,23 +66,23 @@ def selImgFolder():
         showdialog(str(e))
 
 # Getting categories after clicking and solve CheckBox and RadioButton clicking(Automatically clocking by computer)
-# def clickToRightCategory():
-#
-#     try:
-#         category = Select(driver.find_element_by_name("lot[category_path]"))
-#         category.select_by_index(15)
-#
-#         def getCategories():
-#
-#             driver.implicitly_wait(10)
-#             obj = driver.find_element_by_name("lot[property_set][755]")
-#             pod_category = str(obj.text).split('\n')
-#             for item in pod_category:
-#                 ui.comboBox.addItem(item)
-#
-#         getCategories()
-#     except Exception as e:
-#         showdialog(str(e))
+def clickToRightCategory():
+
+    try:
+        category = Select(driver.find_element_by_name("lot[category_path]"))
+        category.select_by_index(15)
+
+        def getCategories():
+
+            driver.implicitly_wait(10)
+            obj = driver.find_element_by_name("lot[property_set][755]")
+            pod_category = str(obj.text).split('\n')
+            for item in pod_category:
+                ui.comboBox.addItem(item)
+
+        getCategories()
+    except Exception as e:
+        showdialog(str(e))
 
 def categories():
     try:
@@ -169,9 +169,9 @@ def addingInfo():
         for i in range(0, filesCount):
 
             try:
-                #categories()
-                pod_category_select(ui.comboBox_2)
-                #clickToRightCategory()
+                categories()
+                # pod_category_select(ui.comboBox_2)
+                clickToRightCategory()
                 checkBoxSolve()
                 driver.implicitly_wait(10)
                 category = Select(driver.find_element_by_name("lot[property_set][755]"))
