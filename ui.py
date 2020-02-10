@@ -151,7 +151,7 @@ class Ui_MainWindow(object):
         self.label_12.setText(QtWidgets.QApplication.translate("MainWindow", "Username:", None, -1))
         self.pushButton.setText(QtWidgets.QApplication.translate("MainWindow", "Start", None, -1))
         self.label_5.setText(QtWidgets.QApplication.translate("MainWindow", "Product name", None, -1))
-        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "Sekiller:", None, -1))
+        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "Photos:", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Interval:", None, -1))
         self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "Min:3s", None, -1))
         self.pushButton_2.setText(QtWidgets.QApplication.translate("MainWindow", "Creator contact", None, -1))

@@ -4,7 +4,7 @@ import sys,os
 import time
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
-from ui  import Ui_MainWindow
+from ui import Ui_MainWindow
 
 # Create Application
 app = QtWidgets.QApplication(sys.argv)

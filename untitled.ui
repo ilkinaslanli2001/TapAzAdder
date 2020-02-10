@@ -281,7 +281,7 @@ font-size:13px;
      </rect>
     </property>
     <property name="text">
-     <string>Sekiller:</string>
+     <string>Photos:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
