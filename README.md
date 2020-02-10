@@ -6,10 +6,10 @@ Cost of the products program takes from the name of the picture.
 
 ## How to use
 ### First of all you should install specific requirements.
-### To do it input "pip install -r requirements.txt" at the root of the project
+### To do it enter "pip install -r requirements.txt" at the root of the project
 
 After running the program,  you should input an information about the order and seller
-The you should input an interval (after how many seconds will each order be added).Set an interval based on your internet speed so that the picture has time to uoload to the website
+The you should enter an interval (after how many seconds will each order be added).Set the interval based on your internet speed so that the picture has time to upload to the website
 Finnaly click 'Start' and wait.
 
 
