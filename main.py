@@ -8,22 +8,23 @@ from ui import Ui_MainWindow
 
 # Create Application
 app = QtWidgets.QApplication(sys.argv)
+
 # init
-
-
-
 MainWindow = QtWidgets.QMainWindow()
 ui = Ui_MainWindow()
 ui.setupUi(MainWindow)
 MainWindow.show()
+
 # Logic
 filesCount=0
 images = []
-prices= []
+prices= [] # The price of order app takes frpm Photo name
 
 imageFolder = ""
 driver = webdriver.Chrome()
 driver.get("https://tap.az/elanlar/new")
+
+
 #Contacts
 def infodialog():
     msg = QMessageBox()
@@ -32,7 +33,10 @@ def infodialog():
     msg.setWindowTitle("Info")
     msg.setStandardButtons(QMessageBox.Ok)
     retval = msg.exec_()
-# Message Box
+
+
+
+# Message Box for showing errors
 def showdialog(msge):
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Information)
@@ -41,87 +45,78 @@ def showdialog(msge):
     msg.setStandardButtons(QMessageBox.Ok)
     retval = msg.exec_()
 
-# Working with Folders
+# Function for working with folder
 def selImgFolder():
     try:
-
         global images
         global imageFolder
         global filesCount
         global prices
-        imageFolder = QFileDialog.getExistingDirectory()
-        ui.label_10.setText(imageFolder)
-        files = os.listdir(imageFolder)
+
+        imageFolder = QFileDialog.getExistingDirectory() # Open the folder
+        ui.label_10.setText(imageFolder) # Path
+        files = os.listdir(imageFolder) # Adding all files which are in the folder
+
         for file in files:
-            if (file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png')):
-                filter = file.split('.')[0]
-                if('(' in filter):
+            if (file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.png')): # check if it's an image
+                filter = file.split('.')[0] # select first part of photo name (Ex.: index.jpg, result:index)
+                if('(' in filter): # In you program there may be many photos with the same name (price), like  ( 200.jpg, 200(2).jpg)
                     prices.append(filter.split('(')[0])
                 else:
                     prices.append(file.split('.')[0])
-                filesCount+=1
+                filesCount+=1 
                 images.append(file)
-        print(prices,filesCount)
+        
     except Exception as e:
         showdialog(str(e))
 
 
-
+# Getting categories
 def categories():
     try:
         category = driver.find_element_by_name("lot[category_path]")
 
         category = str(category.text).split('\n')
-        for item in category:
+        for item in category: # Adding all types to comboBoX
             ui.comboBox_2.addItem(item)
-
-
     except Exception as e:
         showdialog(str(e))
 
-
+# Select the type of category
 def pod_category_select():
     
     category_index = ui.comboBox_2.currentIndex()
     category = Select(driver.find_element_by_name("lot[category_path]"))
     category.select_by_index(category_index)
     driver.implicitly_wait(10)
-  
-    if (ui.comboBox_2.currentIndex() == 20):#14 is the current id of selected item
-         ui.comboBox.clear()
+    
+    if(ui.comboBox_2.currentIndex()!=0): # If the current index of combox box is not 0 ( Program works with only 4 types of order ) 
 
-         pod_category = driver.find_element_by_name("lot[property_set][754]")
-         pod_category = str(pod_category.text).split('\n')
-        
-         for item in pod_category:
-
-            ui.comboBox.addItem(item)
-    if (ui.comboBox_2.currentIndex() ==21):
-        ui.comboBox.clear()
-        pod_category = driver.find_element_by_name("lot[property_set][755]")
-        pod_category = str(pod_category.text).split('\n')
-        for item in pod_category:
-            ui.comboBox.addItem(item)
-    if (ui.comboBox_2.currentIndex() == 22):
-        ui.comboBox.clear()
-        pod_category = driver.find_element_by_name("lot[property_set][756]")
-        pod_category = str(pod_category.text).split('\n')
-        for item in pod_category:
-            ui.comboBox.addItem(item)
-    if (ui.comboBox_2.currentIndex() == 23):
-        ui.comboBox.clear()
-        pod_category = driver.find_element_by_name("lot[property_set][757]")
-        pod_category = str(pod_category.text).split('\n')
-        for item in pod_category:
-            ui.comboBox.addItem(item)
-    if (ui.comboBox_2.currentIndex() == 24):
-        ui.comboBox.clear()
-        pod_category = driver.find_element_by_name("lot[property_set][758]")
+        if (ui.comboBox_2.currentIndex() == 20):#20 is the current id of selected item
+            ui.comboBox.clear()
+            pod_category = driver.find_element_by_name("lot[property_set][754]")
+           
+        if (ui.comboBox_2.currentIndex() ==21):
+            ui.comboBox.clear()
+            pod_category = driver.find_element_by_name("lot[property_set][755]")
+           
+        if (ui.comboBox_2.currentIndex() == 22):
+            ui.comboBox.clear()
+            pod_category = driver.find_element_by_name("lot[property_set][756]")
+           
+        if (ui.comboBox_2.currentIndex() == 23):
+            ui.comboBox.clear()
+            pod_category = driver.find_element_by_name("lot[property_set][757]")
+           
+        if (ui.comboBox_2.currentIndex() == 24):
+            ui.comboBox.clear()
+            pod_category = driver.find_element_by_name("lot[property_set][758]")
+            
         pod_category = str(pod_category.text).split('\n')
         for item in pod_category:
             ui.comboBox.addItem(item)
 
-
+#Program has to click on 2 checkboxex
 def checkBoxSolve():
     try:
         while (True):
@@ -159,30 +154,31 @@ def addingInfo():
 
             try:
                
-               
-               
                 checkBoxSolve()
-                driver.implicitly_wait(10)
+                driver.implicitly_wait(10) 
                 category_index = ui.comboBox_2.currentIndex()
                 category = Select(driver.find_element_by_name("lot[category_path]"))
                 category.select_by_index(category_index)
                 driver.implicitly_wait(10)
-
                 if (ui.comboBox_2.currentIndex() == 20):
                     category = Select(driver.find_element_by_name("lot[property_set][754]"))
                     category.select_by_index(ui.comboBox.currentIndex())
+
                 if (ui.comboBox_2.currentIndex() == 21):
                     category = Select(driver.find_element_by_name("lot[property_set][755]"))
                     category.select_by_index(ui.comboBox.currentIndex())
+
                 if (ui.comboBox_2.currentIndex() == 22):
-                        category = Select(driver.find_element_by_name("lot[property_set][756]"))
-                        category.select_by_index(ui.comboBox.currentIndex())
+                    category = Select(driver.find_element_by_name("lot[property_set][756]"))
+                    category.select_by_index(ui.comboBox.currentIndex())
+
                 if (ui.comboBox_2.currentIndex() == 23):
-                        category = Select(driver.find_element_by_name("lot[property_set][757]"))
-                        category.select_by_index(ui.comboBox.currentIndex())
+                    category = Select(driver.find_element_by_name("lot[property_set][757]"))
+                    category.select_by_index(ui.comboBox.currentIndex()) 
+                    
                 if (ui.comboBox_2.currentIndex() == 24):
-                        category = Select(driver.find_element_by_name("lot[property_set][758]"))
-                        category.select_by_index(ui.comboBox.currentIndex())
+                    category = Select(driver.find_element_by_name("lot[property_set][758]"))
+                    category.select_by_index(ui.comboBox.currentIndex())
               
                
                 driver.find_element_by_id('lot_price').clear()
@@ -218,16 +214,7 @@ def addingInfo():
         ui.pushButton.setEnabled(True)
 
 
-
-
-
-
-
-
-
-
 categories()
-#clickToRightCategory()
 pod_category_select()
 ui.toolButton.clicked.connect(selImgFolder)
 ui.pushButton.clicked.connect(addingInfo)
