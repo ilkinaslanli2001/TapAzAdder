@@ -1,3 +1,4 @@
 pyqt5-tools
 PyQt5
+PySide2
 selenium

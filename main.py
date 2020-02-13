@@ -65,28 +65,11 @@ def selImgFolder():
     except Exception as e:
         showdialog(str(e))
 
-# Getting categories after clicking and solve CheckBox and RadioButton clicking(Automatically clocking by computer)
-def clickToRightCategory():
 
-    try:
-        category = Select(driver.find_element_by_name("lot[category_path]"))
-        category.select_by_index(15)
-
-        def getCategories():
-
-            driver.implicitly_wait(10)
-            obj = driver.find_element_by_name("lot[property_set][755]")
-            pod_category = str(obj.text).split('\n')
-            for item in pod_category:
-                ui.comboBox.addItem(item)
-
-        getCategories()
-    except Exception as e:
-        showdialog(str(e))
 
 def categories():
     try:
-        category =driver.find_element_by_name("lot[category_path]")
+        category = driver.find_element_by_name("lot[category_path]")
 
         category = str(category.text).split('\n')
         for item in category:
@@ -97,36 +80,42 @@ def categories():
         showdialog(str(e))
 
 
-def pod_category_select(self):
+def pod_category_select():
+    
     category_index = ui.comboBox_2.currentIndex()
     category = Select(driver.find_element_by_name("lot[category_path]"))
     category.select_by_index(category_index)
     driver.implicitly_wait(10)
-
-    if (ui.comboBox_2.currentIndex() == 14):#14 is the current id of selected item
+  
+    if (ui.comboBox_2.currentIndex() == 20):#14 is the current id of selected item
+         ui.comboBox.clear()
 
          pod_category = driver.find_element_by_name("lot[property_set][754]")
          pod_category = str(pod_category.text).split('\n')
+        
          for item in pod_category:
 
             ui.comboBox.addItem(item)
-    if (ui.comboBox_2.currentIndex() == 15):
+    if (ui.comboBox_2.currentIndex() ==21):
+        ui.comboBox.clear()
         pod_category = driver.find_element_by_name("lot[property_set][755]")
         pod_category = str(pod_category.text).split('\n')
         for item in pod_category:
             ui.comboBox.addItem(item)
-    if (ui.comboBox_2.currentIndex() == 16):
-
+    if (ui.comboBox_2.currentIndex() == 22):
+        ui.comboBox.clear()
         pod_category = driver.find_element_by_name("lot[property_set][756]")
         pod_category = str(pod_category.text).split('\n')
         for item in pod_category:
             ui.comboBox.addItem(item)
-    if (ui.comboBox_2.currentIndex() == 17):
+    if (ui.comboBox_2.currentIndex() == 23):
+        ui.comboBox.clear()
         pod_category = driver.find_element_by_name("lot[property_set][757]")
         pod_category = str(pod_category.text).split('\n')
         for item in pod_category:
             ui.comboBox.addItem(item)
-    if (ui.comboBox_2.currentIndex() == 18):
+    if (ui.comboBox_2.currentIndex() == 24):
+        ui.comboBox.clear()
         pod_category = driver.find_element_by_name("lot[property_set][758]")
         pod_category = str(pod_category.text).split('\n')
         for item in pod_category:
@@ -137,7 +126,7 @@ def checkBoxSolve():
     try:
         while (True):
             try:
-                driver.find_element_by_id("lot_property_set_761").click()
+               
                 driver.find_element_by_name("lot[service]").click()
                 driver.find_element_by_id("lot_contact_attributes_update_user").click()
 
@@ -169,14 +158,33 @@ def addingInfo():
         for i in range(0, filesCount):
 
             try:
-                categories()
-                # pod_category_select(ui.comboBox_2)
-                clickToRightCategory()
+               
+               
+               
                 checkBoxSolve()
                 driver.implicitly_wait(10)
-                category = Select(driver.find_element_by_name("lot[property_set][755]"))
-                category.select_by_index(ui.comboBox.currentIndex())
+                category_index = ui.comboBox_2.currentIndex()
+                category = Select(driver.find_element_by_name("lot[category_path]"))
+                category.select_by_index(category_index)
+                driver.implicitly_wait(10)
 
+                if (ui.comboBox_2.currentIndex() == 20):
+                    category = Select(driver.find_element_by_name("lot[property_set][754]"))
+                    category.select_by_index(ui.comboBox.currentIndex())
+                if (ui.comboBox_2.currentIndex() == 21):
+                    category = Select(driver.find_element_by_name("lot[property_set][755]"))
+                    category.select_by_index(ui.comboBox.currentIndex())
+                if (ui.comboBox_2.currentIndex() == 22):
+                        category = Select(driver.find_element_by_name("lot[property_set][756]"))
+                        category.select_by_index(ui.comboBox.currentIndex())
+                if (ui.comboBox_2.currentIndex() == 23):
+                        category = Select(driver.find_element_by_name("lot[property_set][757]"))
+                        category.select_by_index(ui.comboBox.currentIndex())
+                if (ui.comboBox_2.currentIndex() == 24):
+                        category = Select(driver.find_element_by_name("lot[property_set][758]"))
+                        category.select_by_index(ui.comboBox.currentIndex())
+              
+               
                 driver.find_element_by_id('lot_price').clear()
                 driver.find_element_by_id('lot_price').send_keys(prices[i])
 
@@ -217,10 +225,10 @@ def addingInfo():
 
 
 
-#clickToRightCategory()
+
 categories()
-
-
+#clickToRightCategory()
+pod_category_select()
 ui.toolButton.clicked.connect(selImgFolder)
 ui.pushButton.clicked.connect(addingInfo)
 ui.pushButton_2.clicked.connect(infodialog)
