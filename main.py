@@ -77,38 +77,45 @@ def categories():
         category = driver.find_element_by_name("lot[category_path]")
 
         category = str(category.text).split('\n')
+        i=0
         for item in category: # Adding all types to comboBoX
-            ui.comboBox_2.addItem(item)
+            if(i==0 or i==20 or i==21 or i==22 or i==23 or i==24):
+                ui.comboBox_2.addItem(item)
+            i+=1
+            continue
+
     except Exception as e:
         showdialog(str(e))
 
 # Select the type of category
 def pod_category_select():
-    
-    category_index = ui.comboBox_2.currentIndex()
+    pod_category = ""
+    category_index = 0
+    if(ui.comboBox_2.currentIndex()!=0):
+        category_index = (ui.comboBox_2.currentIndex()+19)
     category = Select(driver.find_element_by_name("lot[category_path]"))
     category.select_by_index(category_index)
     driver.implicitly_wait(10)
-    
+    time.sleep(1)
     if(ui.comboBox_2.currentIndex()!=0): # If the current index of combox box is not 0 ( Program works with only 4 types of order ) 
 
-        if (ui.comboBox_2.currentIndex() == 20):#20 is the current id of selected item
+        if (ui.comboBox_2.currentIndex() == 1):#1 is the current id of selected item
             ui.comboBox.clear()
             pod_category = driver.find_element_by_name("lot[property_set][754]")
            
-        if (ui.comboBox_2.currentIndex() ==21):
+        if (ui.comboBox_2.currentIndex() ==2):
             ui.comboBox.clear()
             pod_category = driver.find_element_by_name("lot[property_set][755]")
            
-        if (ui.comboBox_2.currentIndex() == 22):
+        if (ui.comboBox_2.currentIndex() == 3):
             ui.comboBox.clear()
             pod_category = driver.find_element_by_name("lot[property_set][756]")
            
-        if (ui.comboBox_2.currentIndex() == 23):
+        if (ui.comboBox_2.currentIndex() == 4):
             ui.comboBox.clear()
             pod_category = driver.find_element_by_name("lot[property_set][757]")
            
-        if (ui.comboBox_2.currentIndex() == 24):
+        if (ui.comboBox_2.currentIndex() ==  5):
             ui.comboBox.clear()
             pod_category = driver.find_element_by_name("lot[property_set][758]")
             
@@ -116,12 +123,13 @@ def pod_category_select():
         for item in pod_category:
             ui.comboBox.addItem(item)
 
+
 #Program has to click on 2 checkboxex
 def checkBoxSolve():
     try:
         while (True):
             try:
-               
+
                 driver.find_element_by_name("lot[service]").click()
                 driver.find_element_by_id("lot_contact_attributes_update_user").click()
 
@@ -131,13 +139,27 @@ def checkBoxSolve():
     except Exception as e:
         showdialog(str(e))
 
+
+def newCheckBox(id):
+    if (ui.checkBox.isChecked()):
+        if(id==2):
+            driver.find_element_by_id("lot_property_set_761").click()
+        if (id == 3):
+            driver.find_element_by_id("lot_property_set_757").click()
+        if (id == 4):
+            driver.find_element_by_id("lot_property_set_772").click()
+
+
+
 # Handling Errors
 def errorCheck():
     
     try:
         errors=""
-        if not ui.lineEdit.text() or not ui.lineEdit_2.text() or not ui.lineEdit_4.text() or not ui.textEdit.toPlainText() or not ui.lineEdit_5.text() or not ui.label_10.text() or ui.comboBox.currentIndex()==0:
-            errors+="Elan tam doldurulmayib"
+        if not ui.lineEdit.text() or not ui.lineEdit_2.text() or not ui.lineEdit_4.text() \
+            or not ui.textEdit.toPlainText() or not ui.lineEdit_5.text() \
+              or not ui.label_10.text() or ui.comboBox.currentIndex() == 0:
+            errors += "Elan tam doldurulmayib"
 
         return  errors
     except Exception as e:
@@ -156,27 +178,30 @@ def addingInfo():
                
                 checkBoxSolve()
                 driver.implicitly_wait(10) 
-                category_index = ui.comboBox_2.currentIndex()
+                category_index = (ui.comboBox_2.currentIndex()+19)
                 category = Select(driver.find_element_by_name("lot[category_path]"))
                 category.select_by_index(category_index)
                 driver.implicitly_wait(10)
-                if (ui.comboBox_2.currentIndex() == 20):
+                if (ui.comboBox_2.currentIndex() == 1):
                     category = Select(driver.find_element_by_name("lot[property_set][754]"))
                     category.select_by_index(ui.comboBox.currentIndex())
 
-                if (ui.comboBox_2.currentIndex() == 21):
+                if (ui.comboBox_2.currentIndex() == 2):
                     category = Select(driver.find_element_by_name("lot[property_set][755]"))
                     category.select_by_index(ui.comboBox.currentIndex())
+                    newCheckBox(2)
 
-                if (ui.comboBox_2.currentIndex() == 22):
+                if (ui.comboBox_2.currentIndex() == 3):
                     category = Select(driver.find_element_by_name("lot[property_set][756]"))
                     category.select_by_index(ui.comboBox.currentIndex())
+                    newCheckBox(3)
 
-                if (ui.comboBox_2.currentIndex() == 23):
+                if (ui.comboBox_2.currentIndex() == 4):
                     category = Select(driver.find_element_by_name("lot[property_set][757]"))
-                    category.select_by_index(ui.comboBox.currentIndex()) 
+                    category.select_by_index(ui.comboBox.currentIndex())
+                    newCheckBox(4)
                     
-                if (ui.comboBox_2.currentIndex() == 24):
+                if (ui.comboBox_2.currentIndex() == 5):
                     category = Select(driver.find_element_by_name("lot[property_set][758]"))
                     category.select_by_index(ui.comboBox.currentIndex())
               

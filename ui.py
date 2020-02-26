@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'untitled.ui',
-# licensing of 'untitled.ui' applies.
+# Form implementation generated from reading ui file 'untitled.ui'
 #
-# Created: Fri Oct 11 23:17:49 2019
-#      by: pyside2-uic  running on PySide2 5.13.1
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PySide2 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         self.label_11.setText("")
         self.label_11.setObjectName("label_11")
         self.toolButton = QtWidgets.QToolButton(self.centralwidget)
-        self.toolButton.setGeometry(QtCore.QRect(130, 341, 31, 20))
+        self.toolButton.setGeometry(QtCore.QRect(130, 381, 31, 20))
         self.toolButton.setObjectName("toolButton")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setGeometry(QtCore.QRect(480, 10, 251, 111))
@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton.setObjectName("pushButton")
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
-        self.label_10.setGeometry(QtCore.QRect(170, 340, 581, 21))
+        self.label_10.setGeometry(QtCore.QRect(170, 380, 581, 21))
         self.label_10.setStyleSheet("label10\n"
 "{\n"
 "width:auto;\n"
@@ -105,7 +105,7 @@ class Ui_MainWindow(object):
 "}")
         self.textEdit.setObjectName("textEdit")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(10, 340, 61, 21))
+        self.label_4.setGeometry(QtCore.QRect(10, 380, 61, 21))
         self.label_4.setObjectName("label_4")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(510, 150, 71, 16))
@@ -130,6 +130,13 @@ class Ui_MainWindow(object):
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(10, 60, 121, 21))
         self.label_7.setObjectName("label_7")
+        self.label_13 = QtWidgets.QLabel(self.centralwidget)
+        self.label_13.setGeometry(QtCore.QRect(10, 340, 61, 21))
+        self.label_13.setObjectName("label_13")
+        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox.setGeometry(QtCore.QRect(140, 340, 21, 17))
+        self.checkBox.setText("")
+        self.checkBox.setObjectName("checkBox")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -141,30 +148,21 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Description", None, -1))
-        self.label_6.setText(QtWidgets.QApplication.translate("MainWindow", "Product Type", None, -1))
-        self.toolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "User haqqin da melumat", None, -1))
-        self.label_8.setText(QtWidgets.QApplication.translate("MainWindow", "Mail:", None, -1))
-        self.label_9.setText(QtWidgets.QApplication.translate("MainWindow", "Number:", None, -1))
-        self.label_12.setText(QtWidgets.QApplication.translate("MainWindow", "Username:", None, -1))
-        self.pushButton.setText(QtWidgets.QApplication.translate("MainWindow", "Start", None, -1))
-        self.label_5.setText(QtWidgets.QApplication.translate("MainWindow", "Product name", None, -1))
-        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "Photos:", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Interval:", None, -1))
-        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "Min:3s", None, -1))
-        self.pushButton_2.setText(QtWidgets.QApplication.translate("MainWindow", "Creator contact", None, -1))
-        self.label_7.setText(QtWidgets.QApplication.translate("MainWindow", "Product Category", None, -1))
-        self.actionAbout.setText(QtWidgets.QApplication.translate("MainWindow", "About", None, -1))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
-
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "Description"))
+        self.label_6.setText(_translate("MainWindow", "Product Type"))
+        self.toolButton.setText(_translate("MainWindow", "..."))
+        self.groupBox.setTitle(_translate("MainWindow", "User haqqin da melumat"))
+        self.label_8.setText(_translate("MainWindow", "Mail:"))
+        self.label_9.setText(_translate("MainWindow", "Number:"))
+        self.label_12.setText(_translate("MainWindow", "Username:"))
+        self.pushButton.setText(_translate("MainWindow", "Start"))
+        self.label_5.setText(_translate("MainWindow", "Product name"))
+        self.label_4.setText(_translate("MainWindow", "Photos:"))
+        self.label_2.setText(_translate("MainWindow", "Interval:"))
+        self.label_3.setText(_translate("MainWindow", "Min:3s"))
+        self.pushButton_2.setText(_translate("MainWindow", "Creator contact"))
+        self.label_7.setText(_translate("MainWindow", "Product Category"))
+        self.label_13.setText(_translate("MainWindow", "New:"))
+        self.actionAbout.setText(_translate("MainWindow", "About"))
