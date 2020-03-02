@@ -25,7 +25,7 @@ driver = webdriver.Chrome()
 driver.get("https://tap.az/elanlar/new")
 
 
-#Contacts
+# Contacts
 def infodialog():
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Information)
@@ -143,7 +143,7 @@ def checkBoxSolve():
 def newCheckBox(id):
     if (ui.checkBox.isChecked()):
         if(id==2):
-            driver.find_element_by_id("lot_property_set_761").click()
+            driver.find_element_by_id("lot_property_set_761").click() # Each category has different checkbox
         if (id == 3):
             driver.find_element_by_id("lot_property_set_757").click()
         if (id == 4):
