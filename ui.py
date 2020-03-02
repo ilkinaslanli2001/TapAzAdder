@@ -12,7 +12,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Automate Orders")
         MainWindow.resize(764, 480)
         MainWindow.setMaximumSize(QtCore.QSize(764, 480))
         MainWindow.setStyleSheet("QLabel\n"
@@ -149,7 +149,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Automate Orders"))
         self.label.setText(_translate("MainWindow", "Description"))
         self.label_6.setText(_translate("MainWindow", "Product Type"))
         self.toolButton.setText(_translate("MainWindow", "..."))
