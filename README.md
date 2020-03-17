@@ -17,3 +17,8 @@ Finnaly click 'Start' and wait.
 Libraries: PyQt5 (for Gui) , Selenium (for web-scrapping)
 After clicking the 'Start' button, the program opens a cycle which is equal to the number of photos in selected folder.
 Every order has the same name and description which was written before (customer desire)
+
+
+## For creating .exe file of this program you should enter ``` python setup.py build ```
+In ``` build.py ```  I collected all gui of program and code.
+In ``` setup.py ```  You can see main settings for creating exe file
