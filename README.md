@@ -1,4 +1,4 @@
-# WebScrappingPython
+# TapAzAdder
 
 This program  automatically add products which are located in photos folder to Azerbaijan website(www.tap.az) in Chrome Browser.
 Cost of the products program takes from the name of the picture.
